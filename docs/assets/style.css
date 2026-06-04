@@ -23,7 +23,7 @@ body {
 }
 
 main {
-  max-width: 1040px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 3.5rem 1.5rem 6rem;
 }
@@ -48,8 +48,10 @@ main {
 
 .deck-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1rem;
+  /* 各カードを中身の高さにする。背の高いカードに引き伸ばされて間延びするのを防ぐ。 */
+  align-items: start;
 }
 
 .deck-grid .card {
@@ -59,24 +61,30 @@ main {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 2px;
-  padding: 1.4rem 1.5rem;
+  padding: 1.3rem 1.3rem;
   transition: border-color 0.15s ease;
+  /* 高さを統一する。h1 + h2 + h3(最大3行) が収まる高さを全カードの下限に。
+     内容が少ないカードは下に余白が出るが、deck として高さが揃う。 */
+  min-height: 180px;
 }
 .deck-grid .card:hover { border-color: #aaa; }
 
 .deck-grid .card h1 {
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 700;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.45rem;
   line-height: 1.4;
+  /* 折り返すなら行の長さを均等に。孤児（1単語だけ次行）を避ける。 */
+  text-wrap: balance;
 }
 .deck-grid .card h2 {
-  font-size: 0.97rem;
+  font-size: 0.88rem;
   font-weight: 500;
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.7rem;
+  text-wrap: balance;
 }
 .deck-grid .card h3 {
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 400;
   color: var(--sub);
   margin: 0.2rem 0;
