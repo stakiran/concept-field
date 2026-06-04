@@ -63,9 +63,9 @@ main {
   border-radius: 2px;
   padding: 1.3rem 1.3rem;
   transition: border-color 0.15s ease;
-  /* 高さを統一する。h1 + h2 + h3(最大3行) が収まる高さを全カードの下限に。
+  /* 高さを統一する。deck では h3 を隠すので h1 + h2(最大2行) が収まる高さを下限に。
      内容が少ないカードは下に余白が出るが、deck として高さが揃う。 */
-  min-height: 180px;
+  min-height: 120px;
 }
 .deck-grid .card:hover { border-color: #aaa; }
 
@@ -83,14 +83,9 @@ main {
   margin: 0 0 0.7rem;
   text-wrap: balance;
 }
-.deck-grid .card h3 {
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--sub);
-  margin: 0.2rem 0;
-  line-height: 1.65;
-}
-.deck-grid .card > :last-child { margin-bottom: 0; }
+/* deck では h3（展開）を表示しない。名前と What だけで一覧する。
+   h3 はファイルには残っているので、個別ページ（card）では表示される。 */
+.deck-grid .card h3 { display: none; }
 
 /* ---- card（個別）= 疎 ---- */
 
