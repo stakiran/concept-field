@@ -1,0 +1,18 @@
+---
+layout: default
+title: concept deck
+bodyclass: deck
+---
+<header class="deck-head">
+  <h1 class="deck-title">concept deck</h1>
+  <p class="deck-lead">{{ site.description }}</p>
+</header>
+
+<div class="deck-grid">
+{% assign cards = site.cards | sort: 'path' %}
+{% for card in cards %}
+  <a class="card" href="{{ card.url | relative_url }}">
+    {{ card.content }}
+  </a>
+{% endfor %}
+</div>

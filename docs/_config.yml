@@ -1,0 +1,24 @@
+title: concept deck
+description: 既存語を組み合わせて、新しい概念を立てる。
+
+# プロジェクトページ（https://<user>.github.io/concept-field/）想定。
+# ユーザーページや独自ドメインで公開するなら baseurl を "" にする。
+baseurl: "/concept-field"
+
+# カードは _cards/ に 1 card = 1 markdown file で置く。
+collections:
+  cards:
+    output: true
+    permalink: /:name/
+
+# カードファイルは空の front matter だけでよい。レイアウトはここで自動付与する。
+defaults:
+  - scope:
+      type: cards
+    values:
+      layout: card
+      bodyclass: solo
+
+# 既定テーマは使わず、自前の最小レイアウト + CSS で見せる。
+theme: null
+plugins: []

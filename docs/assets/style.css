@@ -1,0 +1,118 @@
+/* concept deck — 色も装飾もほぼ使わない。黒い文字と余白で成立させる。 */
+
+:root {
+  --ink: #1a1a1a;
+  --sub: #6b6b6b;
+  --line: #e3e3e3;
+  --bg: #fafafa;
+  --paper: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 6rem;
+}
+
+/* ---- deck（一覧）= 密 ---- */
+
+.deck-head {
+  text-align: center;
+  margin: 0 0 3rem;
+}
+.deck-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+.deck-lead {
+  margin: 0.6rem 0 0;
+  color: var(--sub);
+  font-size: 0.95rem;
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.deck-grid .card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1.4rem 1.5rem;
+  transition: border-color 0.15s ease;
+}
+.deck-grid .card:hover { border-color: #aaa; }
+
+.deck-grid .card h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  line-height: 1.4;
+}
+.deck-grid .card h2 {
+  font-size: 0.97rem;
+  font-weight: 500;
+  margin: 0 0 0.8rem;
+}
+.deck-grid .card h3 {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--sub);
+  margin: 0.2rem 0;
+  line-height: 1.65;
+}
+.deck-grid .card > :last-child { margin-bottom: 0; }
+
+/* ---- card（個別）= 疎 ---- */
+
+body.solo main { max-width: 680px; }
+
+.card--solo { padding: 2.5rem 0 0; }
+.card--solo h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1.3rem;
+  line-height: 1.35;
+}
+.card--solo h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 2.2rem;
+  line-height: 1.6;
+}
+.card--solo h3 {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--sub);
+  margin: 0.7rem 0;
+  line-height: 1.85;
+}
+
+.back { margin-top: 3.5rem; }
+.back a {
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.back a:hover { color: var(--ink); }
