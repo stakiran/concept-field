@@ -16,3 +16,19 @@ bodyclass: deck
   </a>
 {% endfor %}
 </div>
+
+<script>
+  // 並び順に意味はない（ファイルを作った順なだけ）。読み込みのたびにシャッフルする。
+  // グリッド直後で即実行し、最初の描画前に並び替えてちらつきを防ぐ。
+  // JS が動かない環境では、上のデフォルト順のまま表示される。
+  (function () {
+    var grid = document.querySelector('.deck-grid');
+    if (!grid) return;
+    var cards = Array.prototype.slice.call(grid.children);
+    for (var i = cards.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = cards[i]; cards[i] = cards[j]; cards[j] = tmp;
+    }
+    cards.forEach(function (c) { grid.appendChild(c); });
+  })();
+</script>
